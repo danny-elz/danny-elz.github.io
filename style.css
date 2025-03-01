@@ -212,10 +212,7 @@ section {
 }
 
 #socials-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 1rem;
-  gap: 1rem;
+  display: none;
 }
 
 /* ICONS */
@@ -306,16 +303,6 @@ section {
   bottom: 0;
   animation: bounce 2s infinite;
   transition: all 0.3s ease;
-}
-
-.details-container {
-  padding: 1.5rem;
-  flex: 1;
-  background: var(--card-bg);
-  border-radius: 2rem;
-  border: var(--border-color) 0.1rem solid;
-  border-color: var(--border-color);
-  text-align: center;
 }
 
 .section-container {
@@ -722,4 +709,54 @@ section {
 /* Update section__pic-container img to match */
 .section__pic-container img:not(.about-pic) {
   border-radius: 1rem;  /* Match profile pic radius */
+}
+
+.nav-and-socials {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-socials {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-socials .icon {
+  height: 1.5rem;
+  width: auto;
+}
+
+/* Add back the details container styles */
+.details-container {
+  padding: 1.5rem;
+  flex: 1;
+  background: var(--card-bg);
+  border-radius: 2rem;
+  border: var(--border-color) 0.1rem solid;
+  border-color: var(--border-color);
+  text-align: center;
+}
+
+/* Make sure the text is visible against the dark background */
+.details-container h3 {
+  color: var(--text-color);
+}
+
+.details-container p {
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+/* Ensure the experience and education boxes have proper styling */
+.about-containers .details-container {
+  background: var(--card-bg);
+  border: var(--border-color) 0.1rem solid;
+  transition: all 0.3s ease;
+}
+
+.about-containers .details-container:hover {
+  transform: translateY(-5px);
+  border-color: var(--highlight-color);
+  box-shadow: 0 8px 20px rgba(100, 255, 218, 0.1);
 }
