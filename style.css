@@ -11,7 +11,6 @@ body {
   font-family: 'DM Serif Text', serif;
   background-color: var(--bg-color);
   color: var(--text-color);
-  transition: background-color 0.3s, color 0.3s;
 }
 
 html {
@@ -37,9 +36,10 @@ nav,
 }
 
 nav {
-  justify-content: space-around;
-  align-items: center;
-  height: 17vh;
+  position: relative;
+  justify-content: flex-end;
+  padding-right: 2rem;
+  height: 8vh;
   background-color: var(--nav-bg);
 }
 
@@ -64,12 +64,34 @@ a:hover {
 }
 
 .logo {
-  font-family: 'DM Serif Text', serif;
-  font-size: 2rem;
+  font-family: 'Consolas', monospace;
+  font-size: 1.4rem;
+  color: var(--text-color);
+  margin-right: auto;
+  padding-left: 2rem;
+  margin-top: 1rem;
 }
 
 .logo:hover {
   cursor: default;
+}
+
+.json-quote {
+  color: var(--highlight-color);
+}
+
+.json-value {
+  color: #ff79c6;  /* Pink color for strings */
+}
+
+/* Make numbers a different color */
+.json-value:nth-of-type(2) {
+  color: #bd93f9;  /* Purple for numbers */
+}
+
+/* Remove the typing animation since we're using line breaks now */
+.logo {
+  animation: none;
 }
 
 /* HAMBURGER MENU */
@@ -157,10 +179,10 @@ a:hover {
 section {
   padding-top: 2vh;
   height: auto;
-  margin: 0 10rem;
+  margin: 0 4rem;
   box-sizing: border-box;
   min-height: fit-content;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   animation: fadeIn 0.8s ease-out;
 }
 
@@ -172,31 +194,69 @@ section {
 
 #profile {
   display: flex;
-  justify-content: center;
-  gap: 5rem;
-  height: auto;
-  padding: 6rem 0;
+  justify-content: flex-start;
+  gap: 4rem;
+  height: 70vh;
+  padding: 0 600px 0 15rem;  /* Keep right padding for terminal space */
+  align-items: center;
+  margin-top: -8vh;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .section__pic-container {
-  display: flex;
   height: 400px;
   width: 400px;
-  margin: auto 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-pic {
+  border-radius: 1rem;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* Better image handling */
+  box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);  /* Subtle shadow */
 }
 
 .section__text {
-  align-self: center;
-  text-align: center;
-}
-
-.section__text p {
-  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 0.5rem;
+  min-width: 500px;
+  max-width: 600px;
+  padding-top: 0;
 }
 
 .section__text__p1 {
-  text-align: center;
+  font-size: 1.2rem;
+  margin: 0;
   color: var(--highlight-color);
+}
+
+.title {
+  font-size: 4rem;
+  line-height: 1.1;
+  margin: 0.3rem 0;
+}
+
+.section__text__p2 {
+  font-size: 2rem;
+  margin: 0;
+  color: #8892b0;  /* Softer color for subtitle */
+}
+
+.section-header {
+  font-family: 'Consolas', monospace;
+  font-size: 2.5rem;
+  color: var(--text-color);
+  opacity: 0.9;
+  padding: 0.5rem 0;
 }
 
 .section__text__p2 {
@@ -204,15 +264,32 @@ section {
   margin-bottom: 1rem;
 }
 
-.title {
-  font-family: 'DM Serif Text', serif;
-  font-size: 3rem;
-  text-align: center;
-  color: var(--highlight-color);
+.btn-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin: 0.8rem 0;
+  width: 100%;
 }
 
+/* Update social icons container */
 #socials-container {
-  display: none;
+  margin: 0;
+  justify-content: flex-start;
+  display: flex;
+  gap: 2rem;  /* Increase gap between icons from 1rem to 2rem */
+  margin-top: 0.5rem;
+}
+
+#socials-container .icon {
+  height: 2.5rem;
+  width: 2.5rem;
+  opacity: 0.8;  /* Add slight transparency */
+}
+
+#socials-container .icon:hover {
+  transform: translateY(-3px);
+  opacity: 1;  /* Full opacity on hover */
 }
 
 /* ICONS */
@@ -226,8 +303,10 @@ section {
 
 .btn-container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1rem;
+  margin: 1rem 0;
+  width: 100%;
 }
 
 .btn {
@@ -266,6 +345,8 @@ section {
 
 #about {
   position: relative;
+  padding-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .about-containers {
@@ -298,7 +379,7 @@ section {
 .arrow {
   position: relative;
   display: block;
-  margin: 2rem auto 0;
+  margin: 1rem auto 0;
   right: 0;
   bottom: 0;
   animation: bounce 2s infinite;
@@ -320,13 +401,16 @@ section {
 
 #experience {
   position: relative;
+  padding-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .experience-sub-title {
   color: var(--text-color);
   font-weight: 600;
-  font-size: 1.75rem;
-  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  margin-top: 1rem;
 }
 
 .experience-details-container {
@@ -338,35 +422,36 @@ section {
 
 .article-container {
   display: grid;
-  grid-template-columns: repeat(3, minmax(150px, 1fr));
-  gap: 2rem;
-  margin: 2rem auto;
-  width: 80%;
-  justify-content: center;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 1.5rem auto;
+  width: 70%;
+  justify-items: center;
 }
 
 article {
   display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  width: auto;
+  align-items: flex-start;
   justify-content: flex-start;
-  padding-left: 25%;
-  transition: all 0.3s ease;
+  width: 100%;
+  padding-left: 0;
 }
 
 article .icon {
-  height: 1.2rem;
-  width: 1.2rem;
-  margin: 0;
-  flex-shrink: 0;
+  height: 1rem;
+  width: 1rem;
+  margin-right: 0.4rem;
+  margin-top: 0.25rem;
 }
 
 article h3 {
   margin: 0;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   white-space: nowrap;
   font-weight: 500;
+  line-height: 1.3rem;
+  padding-top: 0.15rem;
+  text-align: left;
 }
 
 .article-container article:nth-last-child(-n+3):first-child:nth-last-child(2),
@@ -375,62 +460,125 @@ article h3 {
 }
 
 .article-container article:hover {
-  transform: translateX(10px);
+  transform: none;
+}
+
+/* Add styles for the experience text container */
+.experience-text-container {
+  width: 80%;
+  margin: 0 auto 3rem auto;  /* Add more bottom margin */
+}
+
+.terminal-box {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  font-family: 'Consolas', monospace;
+}
+
+.terminal-header {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.terminal-header .prompt {
+  color: var(--highlight-color);
+}
+
+.terminal-header .command {
+  color: #ff79c6;
+}
+
+.terminal-header .url {
+  color: #f1fa8c;
+}
+
+.terminal-text {
+  color: var(--text-color);
+  line-height: 1.6;
+  font-size: 1rem;
+  padding: 0;
+  margin: 0;
+  white-space: pre-wrap;
+  text-indent: 0;
+  display: block;
+  font-family: 'Consolas', monospace;
+}
+
+.terminal-box:hover {
+  transform: none;
+  border-color: var(--border-color);
+  box-shadow: none;
 }
 
 /* PROJECTS SECTION */
 
 #projects {
   position: relative;
+  padding-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .color-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 2rem;
-  background: var(--card-bg);
-  border-color: var(--border-color);
-  margin-bottom: 2rem;
-  transition: all 0.3s ease;
-}
-
-.color-container:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(100, 255, 218, 0.1);
-  border-color: var(--highlight-color);
+  border: none;
+  padding: 0;
+  background: transparent;
 }
 
 .project-details {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+  padding: 1rem 0;
 }
 
 .project-title {
-  margin: 0;
-  font-size: 1.5rem;
   color: var(--text-color);
+  font-family: 'Consolas', monospace;
+  font-size: 1.3rem;
+  margin: 1rem 0;
 }
 
-.project-btn {
-  background: transparent;
-  color: var(--btn-color);
-  border: var(--btn-color) 0.1rem solid;
-  font-weight: 600;
+/* Update terminal box for projects */
+.details-container.terminal-box {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem;
+  transition: all 0.3s ease;
+  margin-bottom: 2rem;
 }
 
-.project-btn:hover {
-  background: var(--btn-color);
-  color: var(--btn-text);
-  border: var(--btn-color) 0.1rem solid;
+.details-container.terminal-box:hover {
+  transform: translateY(-5px);
+  border-color: var(--highlight-color);
+  box-shadow: 0 8px 20px rgba(100, 255, 218, 0.1);
 }
 
-/* Remove unused image-related styles */
-.project-img-container {
-  display: none;
+/* Adjust button container in projects */
+.project-details .btn-container {
+  margin: 0;
+}
+
+.project-details .terminal-btn {
+  width: 100% !important;
+  max-width: none;
+}
+
+/* Update URL color for git clone commands */
+.project-details .terminal-btn .url {
+  color: #50fa7b;  /* Change to a green color for git URLs */
+}
+
+/* Optional: add subtle transition */
+.project-details .terminal-btn .url {
+  transition: color 0.3s ease;
+}
+
+.project-details .terminal-btn:hover .url {
+  color: var(--highlight-color);  /* Change color on hover */
 }
 
 /* CONTACT */
@@ -440,38 +588,42 @@ article h3 {
   justify-content: center;
   flex-direction: column;
   height: auto;
-  padding: 4rem 0;
+  padding: 1rem 0;
+  margin-bottom: 1rem;
 }
 
 .contact-info-upper-container {
   display: flex;
   justify-content: center;
-  border-radius: 2rem;
-  border: var(--border-color) 0.1rem solid;
-  border-color: var(--border-color);
-  background: var(--card-bg);
+  gap: 2rem;
   margin: 2rem auto;
   padding: 0.5rem;
+  background: transparent;  /* Remove container background */
+  border: none;  /* Remove container border */
 }
 
 .contact-info-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  margin: 1rem;
+  min-width: 250px;
+  padding: 0.8rem 1.2rem !important;
+  border-radius: 8px !important;  /* Match terminal border radius */
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
 }
 
-.contact-info-container p {
-  font-size: larger;
+.contact-info-container a {
+  color: #50fa7b !important;  /* Match the git clone URL color */
+  text-decoration: none;
 }
 
-.contact-icon {
-  cursor: default;
+.contact-info-container a:hover {
+  color: var(--highlight-color) !important;
+  text-decoration: none;
 }
 
+/* Remove the original icon styles */
+.contact-icon,
 .email-icon {
-  height: 2.5rem;
+  display: none;
 }
 
 /* FOOTER SECTION */
@@ -556,8 +708,13 @@ a:hover {
 
 /* Update contact container */
 .contact-info-upper-container {
-  border-color: var(--border-color);
-  background: var(--card-bg);
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem auto;
+  padding: 0.5rem;
+  background: transparent;  /* Remove container background */
+  border: none;  /* Remove container border */
 }
 
 /* Update icon colors */
@@ -703,7 +860,9 @@ section {
 
 /* Update profile picture corner radius */
 .profile-pic {
-  border-radius: 1rem;  /* 16px rounded corners - moderate radius */
+  border-radius: 1rem;
+  max-width: 100%;
+  height: auto;
 }
 
 /* Update section__pic-container img to match */
@@ -711,36 +870,171 @@ section {
   border-radius: 1rem;  /* Match profile pic radius */
 }
 
-.nav-and-socials {
+/* Typing animation */
+.typing-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--highlight-color);
+  width: 0;
+  transition: width 1s steps(40, end);
+  animation: blink-caret 0.75s step-end infinite;
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--highlight-color) }
+}
+
+/* Update logo styles */
+.logo {
+  font-family: 'Consolas', monospace;
+  font-size: 1.4rem;
+  color: var(--text-color);
+  opacity: 0.9;
+}
+
+/* Loading Screen */
+.loading-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-color);
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 2rem;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+  font-family: 'Consolas', monospace;
 }
 
-.nav-socials {
+body.loading {
+  overflow: hidden;  /* Prevent scrolling on the body while loading */
+}
+
+.loading-progress {
   display: flex;
+  flex-direction: column;
   gap: 1rem;
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  min-width: 300px;
+  font-size: 1.2rem;
+  font-family: 'Consolas', monospace;
 }
 
-.nav-socials .icon {
-  height: 1.5rem;
-  width: auto;
+.loading-line {
+  display: flex;
+  gap: 0.5rem;
+  color: var(--text-color);
+  font-family: 'Consolas', monospace;
+}
+
+.loading-line .prompt {
+  color: var(--highlight-color);
+  font-family: 'Consolas', monospace;
+}
+
+.loading-line .command {
+  color: #ff79c6;
+  font-family: 'Consolas', monospace;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 2px;
+  background: var(--border-color);
+  margin-top: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50%;
+  background: var(--highlight-color);
+  animation: loading 1s ease infinite;
+}
+
+@keyframes loading {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(200%); }
+}
+
+/* Section header animations */
+.section-header {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  transition: width 1s steps(40, end);
+  border-right: none;  /* Remove the cursor */
+}
+
+/* Content animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Add animation delays for content */
+.animate-on-scroll:nth-child(2) { transition-delay: 0.2s; }
+.animate-on-scroll:nth-child(3) { transition-delay: 0.4s; }
+.animate-on-scroll:nth-child(4) { transition-delay: 0.6s; }
+
+/* Update section header styling */
+.section__text__p1 {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+/* Update JSON syntax colors for section headers */
+.section-header .json-quote {
+  color: var(--highlight-color);
+}
+
+.section-header .json-value {
+  color: #ff79c6;
 }
 
 /* Add back the details container styles */
 .details-container {
-  padding: 1.5rem;
+  padding: 1.2rem;
   flex: 1;
   background: var(--card-bg);
   border-radius: 2rem;
   border: var(--border-color) 0.1rem solid;
   border-color: var(--border-color);
   text-align: center;
+  transition: all 0.3s ease;
 }
 
-/* Make sure the text is visible against the dark background */
+/* Add hover effect */
+.details-container:hover {
+  transform: translateY(-5px);
+  border-color: var(--highlight-color);
+  box-shadow: 0 8px 20px rgba(100, 255, 218, 0.1);
+}
+
+/* Make sure text is visible */
 .details-container h3 {
   color: var(--text-color);
+  margin-bottom: 1rem;
 }
 
 .details-container p {
@@ -748,15 +1042,423 @@ section {
   opacity: 0.8;
 }
 
-/* Ensure the experience and education boxes have proper styling */
-.about-containers .details-container {
-  background: var(--card-bg);
-  border: var(--border-color) 0.1rem solid;
-  transition: all 0.3s ease;
+/* Keep cursor only for main header */
+.logo .typing-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--highlight-color);
+  width: 0;
+  transition: width 1s steps(40, end);
+  animation: blink-caret 0.75s step-end infinite;
 }
 
-.about-containers .details-container:hover {
-  transform: translateY(-5px);
+/* Remove cursor from section headers */
+.section-header {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  transition: width 1s steps(40, end);
+  border-right: none;  /* Remove the cursor */
+}
+
+/* Keep the cursor blink animation only for the main header */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--highlight-color) }
+}
+
+/* Terminal container */
+.nav-links-container {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+  width: min(500px, calc(100vw - 4rem));
+  height: min(500px, calc(100vh - 4rem));
+  padding: 1.5rem;
+  background: var(--card-bg);
+  border-radius: 8px;
+  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Terminal input line */
+.terminal-input-line {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  width: 100%;
+  margin-top: auto;
+}
+
+/* Terminal input */
+.terminal-input {
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  font-family: 'Consolas', monospace;
+  font-size: 0.8rem;
+  outline: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* Terminal output */
+.terminal-output {
+  color: var(--text-color);
+  font-family: 'Consolas', monospace;
+  white-space: pre-wrap;
+  margin-bottom: 0.5rem;
+  max-height: min(420px, calc(100vh - 8rem));
+  height: min(420px, calc(100vh - 8rem));
+  overflow-y: auto;
+  flex: 1;
+  font-size: 0.8rem;
+  text-align: left;
+}
+
+/* Remove hover transform from nav container */
+.nav-links-container:hover {
+  transform: none;
+}
+
+/* Remove hover effect from terminal buttons */
+.terminal-btn:hover {
+  transform: none;
+  border-color: var(--border-color) !important;
+  background: var(--card-bg) !important;
+}
+
+/* URL colors for different terminal commands */
+.terminal-btn .url {
+  color: #50fa7b !important;  /* Keep git clone URLs green */
+}
+
+/* Email command URL color */
+.contact-info-container:first-child .url a {
+  color: #bd93f9 !important;  /* Keep email URL purple */
+}
+
+/* LinkedIn command URL color */
+.contact-info-container:last-child .url a {
+  color: #bd93f9 !important;  /* Keep LinkedIn purple */
+}
+
+/* Hover states */
+.contact-info-container:first-child a:hover,
+.contact-info-container:last-child a:hover {
+  color: var(--highlight-color) !important;
+}
+
+/* Update command colors */
+.contact-info-container:first-child .command {
+  color: #ff79c6 !important;  /* Keep mail -s pink */
+}
+
+/* Style the terminal scrollbar */
+.terminal-output::-webkit-scrollbar {
+  width: 8px;
+}
+
+.terminal-output::-webkit-scrollbar-track {
+  background: var(--card-bg);
+  border-radius: 4px;
+}
+
+.terminal-output::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.terminal-output::-webkit-scrollbar-thumb:hover {
+  background: var(--highlight-color);
+}
+
+/* Firefox scrollbar styling */
+.terminal-output {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) var(--card-bg);
+}
+
+/* Update welcome message styling */
+.welcome-message {
+  color: var(--text-color);
+  margin-bottom: 1rem;
+  line-height: 1.4;
+  white-space: pre;
+  text-align: left;
+}
+
+.terminal-output {
+  text-align: left;
+  padding-left: 0;
+}
+
+.terminal-output .command-line {
+  padding-left: 0;
+}
+
+/* Adjust profile content layout */
+.profile-content {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  width: 100%;
+}
+
+/* Update skills section styling */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Consolas', monospace;
+  font-size: 0.9rem;
+}
+
+.skill-item .prompt {
+  color: var(--highlight-color);
+}
+
+.skill-item .command {
+  color: #ff79c6;
+}
+
+.skill-item .skill-name {
+  color: #50fa7b;
+}
+
+/* Remove old skills styling */
+.article-container {
+  display: none;
+}
+
+.experience-sub-title {
+  display: none;
+}
+
+/* Update contact button hover state */
+.contact-info-container:hover {
   border-color: var(--highlight-color);
-  box-shadow: 0 8px 20px rgba(100, 255, 218, 0.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Add media query for very small screens */
+@media screen and (max-width: 480px) {
+  .nav-links-container {
+    right: 1rem;
+    top: 1rem;
+    width: calc(100vw - 2rem);
+    padding: 1rem;
+  }
+}
+
+/* Update responsive styles */
+@media screen and (max-width: 1400px) {
+  #profile {
+    padding-right: 550px;  /* Adjust right padding for medium screens */
+    padding-left: 8rem;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #profile {
+    padding-right: 500px;  /* Further adjust right padding */
+    padding-left: 5rem;
+    gap: 3rem;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #profile {
+    padding: 5rem 2rem;  /* Remove right padding on mobile */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: auto;
+  }
+
+  .nav-links-container {
+    position: fixed;  /* Make terminal fixed on mobile */
+    bottom: 1rem;    /* Position at bottom */
+    top: auto;       /* Remove top positioning */
+    height: 300px;   /* Reduce height on mobile */
+  }
+
+  .section__text {
+    align-items: center;  /* Center text when stacked */
+    min-width: unset;  /* Remove min-width constraint */
+    max-width: 100%;
+    padding: 0 2rem;
+  }
+
+  .btn-container {
+    justify-content: center;  /* Center buttons */
+  }
+
+  #socials-container {
+    justify-content: center;  /* Center social icons */
+  }
+
+  .section__pic-container {
+    width: 300px;  /* Make image smaller on mobile */
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  section {
+    margin: 0 1rem;  /* Reduce section margins */
+  }
+
+  .section__pic-container {
+    width: 250px;  /* Even smaller image on mobile */
+    height: 250px;
+  }
+
+  .title {
+    font-size: 3rem;  /* Smaller title on mobile */
+  }
+
+  .section__text__p2 {
+    font-size: 1.5rem;  /* Smaller subtitle on mobile */
+  }
+}
+
+/* Update terminal responsive styles */
+@media screen and (max-width: 768px) {
+  .nav-links-container {
+    width: calc(100vw - 2rem);
+    height: min(500px, calc(100vh - 4rem));
+    right: 1rem;
+    top: 1rem;
+  }
+
+  .terminal-btn {
+    font-size: 0.8rem;  /* Smaller font for buttons */
+    padding: 0.6rem 1rem !important;
+  }
+}
+
+/* Update terminal input cursor */
+.terminal-input {
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  font-family: 'Consolas', monospace;
+  font-size: 0.8rem;
+  outline: none;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+/* Add block cursor for input */
+.terminal-input-line {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.5rem 0;
+  margin-top: auto;
+  width: 100%;
+  margin-bottom: 0.5rem;
+  position: relative;  /* For cursor positioning */
+}
+
+.terminal-input-line::after {
+  display: none;  /* Remove the cursor block */
+}
+
+/* Update cursor animation */
+@keyframes terminal-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Update project section cursor delays */
+.details-container:nth-child(1) .terminal-cursor {
+  animation-delay: 0.3s;
+}
+
+.details-container:nth-child(2) .terminal-cursor {
+  animation-delay: 0.9s;
+}
+
+.details-container:nth-child(3) .terminal-cursor {
+  animation-delay: 0.1s;
+}
+
+.details-container:nth-child(4) .terminal-cursor {
+  animation-delay: 0.7s;
+}
+
+/* Update project button cursor delays */
+.details-container:nth-child(1) .terminal-btn .terminal-cursor {
+  animation-delay: 0.5s;
+}
+
+.details-container:nth-child(2) .terminal-btn .terminal-cursor {
+  animation-delay: 0.2s;
+}
+
+.details-container:nth-child(3) .terminal-btn .terminal-cursor {
+  animation-delay: 0.8s;
+}
+
+.details-container:nth-child(4) .terminal-btn .terminal-cursor {
+  animation-delay: 0.4s;
+}
+
+/* Terminal button styles */
+.terminal-btn {
+  font-family: 'Consolas', monospace;
+  background: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  border: 1px solid var(--border-color) !important;
+  padding: 0.8rem 1.2rem !important;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content !important;
+  min-width: 200px;
+  margin: 0;
+}
+
+.terminal-btn .prompt {
+  color: var(--highlight-color);
+}
+
+.terminal-btn .command {
+  color: #ff79c6;
+}
+
+.terminal-btn .url {
+  color: #50fa7b !important;
+}
+
+/* Terminal cursor */
+.terminal-cursor {
+  color: var(--highlight-color);
+  background-color: var(--highlight-color);
+  animation: terminal-blink 1.2s step-end infinite;
+  font-weight: normal;
+  margin-left: 4px;
+  font-family: monospace;
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  position: relative;
+  top: 2px;
 }
