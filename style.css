@@ -57,7 +57,7 @@ a {
 }
 
 a:hover {
-  color: grey;
+  color: var(--highlight-color);
   text-decoration: underline;
   text-underline-offset: 1rem;
   text-decoration-color: rgb(181, 181, 181);
@@ -196,6 +196,7 @@ section {
 
 .section__text__p1 {
   text-align: center;
+  color: var(--highlight-color);
 }
 
 .section__text__p2 {
@@ -207,6 +208,7 @@ section {
   font-family: 'DM Serif Text', serif;
   font-size: 3rem;
   text-align: center;
+  color: var(--highlight-color);
 }
 
 #socials-container {
@@ -247,16 +249,16 @@ section {
 
 .btn-color-1,
 .btn-color-2 {
-  background: rgb(53, 53, 53);
-  color: white;
-  border: rgb(53, 53, 53) 0.1rem solid;
+  background: transparent;
+  color: var(--btn-color);
+  border: var(--btn-color) 0.1rem solid;
 }
 
 .btn-color-1:hover,
 .btn-color-2:hover {
-  cursor: pointer;
-  background: rgb(0, 0, 0);
-  border: rgb(255, 255, 255) 0.1rem solid;
+  background: var(--btn-color);
+  color: var(--btn-text);
+  border: var(--btn-color) 0.1rem solid;
 }
 
 .btn-container {
@@ -408,7 +410,8 @@ article h3 {
 
 .color-container:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 20px rgba(100, 255, 218, 0.1);
+  border-color: var(--highlight-color);
 }
 
 .project-details {
@@ -426,16 +429,16 @@ article h3 {
 }
 
 .project-btn {
-  background: rgb(255, 255, 255);
-  color: rgb(53, 53, 53);
-  border: rgb(255, 255, 255) 0.1rem solid;
+  background: transparent;
+  color: var(--btn-color);
+  border: var(--btn-color) 0.1rem solid;
   font-weight: 600;
 }
 
 .project-btn:hover {
-  background: rgb(225, 225, 225);
-  border: rgb(225, 225, 225) 0.1rem solid;
-  color: rgb(0, 0, 0);
+  background: var(--btn-color);
+  color: var(--btn-text);
+  border: var(--btn-color) 0.1rem solid;
 }
 
 /* Remove unused image-related styles */
@@ -457,9 +460,9 @@ article h3 {
   display: flex;
   justify-content: center;
   border-radius: 2rem;
-  border: rgb(53, 53, 53) 0.1rem solid;
-  border-color: rgb(163, 163, 163);
-  background: (250, 250, 250);
+  border: var(--border-color) 0.1rem solid;
+  border-color: var(--border-color);
+  background: var(--card-bg);
   margin: 2rem auto;
   padding: 0.5rem;
 }
@@ -496,21 +499,83 @@ footer p {
   text-align: center;
 }
 
-/* Remove theme variables and just set the dark colors directly */
+/* Update the color scheme variables */
 :root {
-  --bg-color: #1a1a1a;
-  --text-color: #ffffff;
-  --section-bg: #2d2d2d;
-  --card-bg: #333333;
-  --border-color: #444444;
-  --nav-bg: #1a1a1a;
+  --bg-color: #0a192f;          /* Deep navy background */
+  --text-color: #ccd6f6;        /* Soft blue-white text */
+  --highlight-color: #64ffda;   /* Bright teal for highlights/accents */
+  --section-bg: #112240;        /* Slightly lighter navy for sections */
+  --card-bg: #1b2d4d;          /* Navy blue cards */
+  --border-color: #233554;      /* Subtle borders */
+  --nav-bg: rgba(10, 25, 47, 0.85); /* Slightly transparent nav */
+  --btn-color: #64ffda;        /* Teal buttons */
+  --btn-text: #0a192f;         /* Dark text on buttons */
+  --hover-color: #57e6c5;      /* Slightly darker teal for hovers */
 }
 
-/* Remove all theme-toggle related styles */
+/* Update button styles */
+.btn-color-1,
+.btn-color-2 {
+  background: transparent;
+  color: var(--btn-color);
+  border: var(--btn-color) 0.1rem solid;
+}
 
-/* Make checkmarks white */
+.btn-color-1:hover,
+.btn-color-2:hover {
+  background: var(--btn-color);
+  color: var(--btn-text);
+  border: var(--btn-color) 0.1rem solid;
+}
+
+/* Update project buttons */
+.project-btn {
+  background: transparent;
+  color: var(--btn-color);
+  border: var(--btn-color) 0.1rem solid;
+  font-weight: 600;
+}
+
+.project-btn:hover {
+  background: var(--btn-color);
+  color: var(--btn-text);
+  border: var(--btn-color) 0.1rem solid;
+}
+
+/* Update links */
+a {
+  color: var(--text-color);
+}
+
+a:hover {
+  color: var(--highlight-color);
+}
+
+/* Update card hover effects */
+.color-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(100, 255, 218, 0.1);
+  border-color: var(--highlight-color);
+}
+
+/* Update section titles */
+.title {
+  color: var(--highlight-color);
+}
+
+.section__text__p1 {
+  color: var(--highlight-color);
+}
+
+/* Update contact container */
+.contact-info-upper-container {
+  border-color: var(--border-color);
+  background: var(--card-bg);
+}
+
+/* Update icon colors */
 .article-container .icon {
-  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);  /* This creates white color */
+  filter: invert(89%) sepia(19%) saturate(1113%) hue-rotate(111deg) brightness(97%) contrast(98%);
 }
 
 /* Keep the other icons their original color */
@@ -556,7 +621,8 @@ section {
 
 .color-container:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 20px rgba(100, 255, 218, 0.1);
+  border-color: var(--highlight-color);
 }
 
 /* Skill icon animations */
