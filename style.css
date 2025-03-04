@@ -1,5 +1,3 @@
-/* GENERAL */
-
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&display=swap');
 
 * {
@@ -197,7 +195,7 @@ section {
   justify-content: flex-start;
   gap: 4rem;
   height: 70vh;
-  padding: 0 600px 0 15rem;  /* Keep right padding for terminal space */
+  padding: 0 600px 0 15rem;
   align-items: center;
   margin-top: -8vh;
   max-width: none;
@@ -272,24 +270,23 @@ section {
   width: 100%;
 }
 
-/* Update social icons container */
 #socials-container {
   margin: 0;
   justify-content: flex-start;
   display: flex;
-  gap: 2rem;  /* Increase gap between icons from 1rem to 2rem */
+  gap: 2rem;
   margin-top: 0.5rem;
 }
 
 #socials-container .icon {
   height: 2.5rem;
   width: 2.5rem;
-  opacity: 0.8;  /* Add slight transparency */
+  opacity: 0.8;
 }
 
 #socials-container .icon:hover {
   transform: translateY(-3px);
-  opacity: 1;  /* Full opacity on hover */
+  opacity: 1;
 }
 
 /* ICONS */

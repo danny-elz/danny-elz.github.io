@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Scroll to top when page loads
   window.scrollTo(0, 0);
 
   const loadingScreen = document.querySelector('.loading-screen');
@@ -7,7 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const typingText = document.querySelector('.typing-text');
   let percent = 0;
 
-  // Initially hide the JSON header
   typingText.style.width = '0';
 
   const interval = setInterval(() => {
