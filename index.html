@@ -35,9 +35,6 @@
       </div>
     </div>
     <nav id="desktop-nav">
-      <div class="logo">
-        <span class="typing-text">{ <span class="json-quote">"name"</span>: <span class="json-value">"Danny"</span>, <span class="json-quote">"age"</span>: <span class="json-value">25</span> }</span>
-      </div>
       <div class="nav-hover-area"></div>
       <div class="nav-links-container terminal-box">
         <div class="terminal-header">
@@ -54,21 +51,19 @@
       </div>
     </nav>
     <nav id="hamburger-nav">
-      <div class="logo">
-        <span class="typing-text">{ <span class="json-quote">"name"</span>: <span class="json-value">"Danny Elzein"</span>, <span class="json-quote">"age"</span>: <span class="json-value">25</span> }</span>
-      </div>
-      <div class="hamburger-menu">
-        <div class="hamburger-icon" onclick="toggleMenu()">
-          <span></span>
-          <span></span>
-          <span></span>
+      <div class="hamburger-menu terminal-box">
+        <div class="terminal-header">
+          <span class="prompt">guest@portfolio</span>
+          <span class="command">:~$</span>
+          <span class="command">ls</span>
+          <span class="url">sections/</span>
         </div>
-        <div class="menu-links">
-          <li><a href="#about" onclick="toggleMenu()">About</a></li>
-          <li><a href="#experience" onclick="toggleMenu()">Experience</a></li>
-          <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
-          <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-        </div>
+        <ul class="menu-links">
+          <li><a href="#about">about/</a></li>
+          <li><a href="#experience">experience/</a></li>
+          <li><a href="#projects">projects/</a></li>
+          <li><a href="#contact">contact/</a></li>
+        </ul>
       </div>
     </nav>
     <section id="profile">
@@ -143,12 +138,6 @@
           </div>
         </div>
       </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#experience'"
-      />
     </section>
     <section id="experience">
       <p class="section__text__p1">
@@ -229,12 +218,6 @@
           </div>
         </div>
       </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#projects'"
-      />
     </section>
     <section id="projects">
       <p class="section__text__p1">
@@ -255,8 +238,7 @@
                 <button class="btn btn-color-2 terminal-btn" onclick="location.href='https://github.com/danny-elz/order-book-system'">
                   <span class="prompt">$</span>
                   <span class="command">git clone</span>
-                  <span class="url">github.com/danny-elz/order-book-system</span>
-                  <span class="terminal-cursor">&nbsp;</span>
+                  <span class="url">C++ Orderbook</span>
                 </button>
               </div>
             </div>
@@ -272,8 +254,7 @@
                 <button class="btn btn-color-2 terminal-btn" onclick="location.href='https://github.com/danny-elz/CarRepairMangement'">
                   <span class="prompt">$</span>
                   <span class="command">git clone</span>
-                  <span class="url">github.com/danny-elz/CarRepairMangement</span>
-                  <span class="terminal-cursor">&nbsp;</span>
+                  <span class="url">Car Repair Management</span>
                 </button>
               </div>
             </div>
@@ -289,8 +270,7 @@
                 <button class="btn btn-color-2 terminal-btn" onclick="location.href='https://github.com/danny-elz/Sentiment-Analyzer'">
                   <span class="prompt">$</span>
                   <span class="command">git clone</span>
-                  <span class="url">github.com/danny-elz/Sentiment-Analyzer</span>
-                  <span class="terminal-cursor">&nbsp;</span>
+                  <span class="url">Sentiment Analyzer</span>
                 </button>
               </div>
             </div>
@@ -306,20 +286,13 @@
                 <button class="btn btn-color-2 terminal-btn" onclick="location.href='https://github.com/danny-elz/Leetcode-Solutions'">
                   <span class="prompt">$</span>
                   <span class="command">git clone</span>
-                  <span class="url">github.com/danny-elz/Leetcode-Solutions</span>
-                  <span class="terminal-cursor">&nbsp;</span>
+                  <span class="url">Leetcode Solutions</span>
                 </button>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <img
-        src="./assets/arrow.png"
-        alt="Arrow icon"
-        class="icon arrow"
-        onclick="location.href='./#contact'"
-      />
     </section>
     <section id="contact">
       <p class="section__text__p1">
@@ -332,17 +305,14 @@
           <span class="prompt">$</span>
           <span class="command">mail -s</span>
           <span class="url"><a href="mailto:dannyelzein.dev@gmail.com">dannyelzein.dev@gmail.com</a></span>
-          <span class="terminal-cursor">&nbsp;</span>
         </div>
         <div class="contact-info-container terminal-btn">
           <span class="prompt">$</span>
           <span class="command">open</span>
           <span class="url"><a href="https://www.linkedin.com/in/danny-elzein/">linkedin/danny-elzein</a></span>
-          <span class="terminal-cursor">&nbsp;</span>
         </div>
       </div>
     </section>
     <script src="script.js"></script>
-    <script src="darkmode.js"></script>
   </body>
 </html>
