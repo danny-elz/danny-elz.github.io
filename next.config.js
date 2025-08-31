@@ -3,10 +3,6 @@ const nextConfig = {
   experimental: {
     // No appDir needed for Next.js 14+ with App Router
   },
-  output: 'export',
-  trailingSlash: true,
-  basePath: '',
-  assetPrefix: '',
   // Optimize webpack configuration for performance
   webpack: (config) => {
     // Exclude Archon and context pack folders from build
@@ -65,6 +61,33 @@ const nextConfig = {
   },
   poweredByHeader: false,
   compress: true,
+  headers: async () => [
+    {
+      source: '/(.*)',
+      headers: [
+        {
+          key: 'X-Content-Type-Options',
+          value: 'nosniff',
+        },
+        {
+          key: 'X-Frame-Options',
+          value: 'DENY',
+        },
+        {
+          key: 'X-XSS-Protection',
+          value: '1; mode=block',
+        },
+        {
+          key: 'Referrer-Policy',
+          value: 'strict-origin-when-cross-origin',
+        },
+        {
+          key: 'Content-Security-Policy',
+          value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://assets.calendly.com https://plausible.io; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://api.resend.com https://plausible.io; frame-src https://calendly.com;",
+        },
+      ],
+    },
+  ],
 }
 
 module.exports = nextConfig

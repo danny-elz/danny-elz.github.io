@@ -2,14 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { z } from 'zod'
 
-// Initialize Resend lazily to avoid build-time errors
-let resend: Resend | null = null
-const getResend = () => {
-  if (!resend && process.env.RESEND_API_KEY) {
-    resend = new Resend(process.env.RESEND_API_KEY)
-  }
-  return resend
-}
+// Initialize Resend
+const resend = new Resend(process.env.RESEND_API_KEY)
 
 // Validation schema
 const contactSchema = z.object({
@@ -185,15 +179,7 @@ export async function POST(request: NextRequest) {
       },
     }
     
-    const resendClient = getResend()
-    if (!resendClient) {
-      return NextResponse.json(
-        { success: false, message: 'Email service is not configured' },
-        { status: 500 }
-      )
-    }
-    
-    const { error: sendError } = await resendClient.emails.send(emailData)
+    const { error: sendError } = await resend.emails.send(emailData)
     
     if (sendError) {
       console.error('Resend error:', sendError)
@@ -267,7 +253,7 @@ Cloud Architecture & Performance Engineering
 Response time: < 2 hours | All consultations confidential
     `
     
-    await resendClient.emails.send({
+    await resend.emails.send({
       from: process.env.SENDER_EMAIL,
       to: validatedData.email,
       subject: 'Thank you for reaching out - Danny Elzein',
