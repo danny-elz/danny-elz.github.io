@@ -97,59 +97,48 @@ export default function ExperienceTimeline({ className }: ExperienceTimelineProp
   
   const experiences: Experience[] = [
     {
-      id: 'neural-innovation',
-      company: 'Neural Innovation',
-      role: 'Founder & Lead Engineer',
-      duration: '2025 – Present',
-      startDate: new Date('2025-01-01'),
+      id: 'd-sports',
+      company: 'D-Sports',
+      role: 'Software Engineer',
+      duration: 'May 2024 – Present',
+      startDate: new Date('2024-05-01'),
       highlights: [
-        'Building next-generation compliance tools',
-        'Scaling cloud infrastructure for Fortune 500 clients',
-        'Leading technical strategy and product development'
+        'Developed blockchain-based sports analytics platform',
+        'Implemented AI-driven performance insights',
+        'Built scalable microservices architecture',
+        'Collaborated in hybrid environment across Toronto'
       ],
-      technologies: ['Python', 'AWS', 'Next.js', 'TypeScript', 'PostgreSQL']
+      technologies: ['Blockchain', 'Artificial Intelligence', 'Node.js', 'React', 'TypeScript']
     },
     {
-      id: 'techcorp-senior',
-      company: 'Senior Architect @ TechCorp',
-      role: 'Technical Lead',
-      duration: '2024 – 2025',
-      startDate: new Date('2024-01-01'),
-      endDate: new Date('2025-01-01'),
+      id: 'iris-software',
+      company: 'IRIS Software Group',
+      role: 'Back End Developer',
+      duration: 'Jan 2023 – Apr 2023',
+      startDate: new Date('2023-01-01'),
+      endDate: new Date('2023-04-01'),
       highlights: [
-        'Led 12-person engineering team',
-        'Reduced infrastructure costs by 67%',
-        'Architected microservices for 10M+ users'
+        'Built robust backend infrastructure for enterprise software',
+        'Optimized database queries and API performance',
+        'Integrated front-end components with backend services',
+        'Collaborated on software infrastructure improvements'
       ],
-      technologies: ['Kubernetes', 'Docker', 'AWS', 'Python', 'React', 'GraphQL']
+      technologies: ['Software Infrastructure', 'Front-End Development', 'API Development', 'Database Optimization']
     },
     {
-      id: 'startupxyz',
-      company: 'Software Engineer @ StartupXYZ',
-      role: 'Full Stack Engineer',
-      duration: '2022 – 2024',
+      id: 'sentry',
+      company: 'Sentry',
+      role: 'Software Engineer',
+      duration: 'Jan 2022 – Apr 2022',
       startDate: new Date('2022-01-01'),
-      endDate: new Date('2024-01-01'),
+      endDate: new Date('2022-04-01'),
       highlights: [
-        'Scaled platform from 0 to 1M+ users',
-        'Built real-time collaboration features',
-        'Optimized database performance by 10x'
+        'Contributed to error monitoring and performance tracking platform',
+        'Enhanced real-time error detection capabilities',
+        'Improved system reliability and monitoring tools',
+        'Worked in hybrid Toronto environment'
       ],
-      technologies: ['Node.js', 'React', 'PostgreSQL', 'Redis', 'AWS Lambda']
-    },
-    {
-      id: 'freelance',
-      company: 'Freelance Developer',
-      role: 'Full Stack Consultant',
-      duration: '2020 – 2022',
-      startDate: new Date('2020-01-01'),
-      endDate: new Date('2022-01-01'),
-      highlights: [
-        'Delivered 20+ projects for various clients',
-        'Specialized in performance optimization',
-        'Built custom CMS and e-commerce solutions'
-      ],
-      technologies: ['React', 'Node.js', 'Python', 'Django', 'PostgreSQL']
+      technologies: ['Error Monitoring', 'Performance Tracking', 'Real-time Systems', 'DevOps']
     }
   ]
   
