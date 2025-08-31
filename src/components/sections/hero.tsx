@@ -128,14 +128,15 @@ export default function Hero({ className }: HeroProps) {
       if (vantaEffect) {
         try {
           vantaEffect.destroy()
+          setEffect(null)
         } catch (error) {
           console.warn('Error destroying Vanta effect:', error)
         }
       }
     }
-  }, [isReduced, isDark])
+  }, [isReduced]) // Remove isDark from dependencies
   
-  // Update globe color when theme changes
+  // Update globe color when theme changes (without reinitializing)
   useEffect(() => {
     if (effect && !isReduced) {
       try {
