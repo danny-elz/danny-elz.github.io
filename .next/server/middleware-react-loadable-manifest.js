@@ -1,0 +1,1 @@
+self.__REACT_LOADABLE_MANIFEST="{\"components/sections/hero.tsx -> vanta/dist/vanta.globe.min\":{\"id\":\"components/sections/hero.tsx -> vanta/dist/vanta.globe.min\",\"files\":[\"static/chunks/vanta.js\"]},\"lib/analytics.ts -> web-vitals\":{\"id\":\"lib/analytics.ts -> web-vitals\",\"files\":[\"static/chunks/vendors.js\"]}}"
