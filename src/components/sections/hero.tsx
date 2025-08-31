@@ -89,17 +89,28 @@ interface HeroProps {
 export default function Hero({ className }: HeroProps) {
   const vantaRef = useRef<HTMLDivElement>(null)
   const [effect, setEffect] = useState<any>(null)
+  const [mounted, setMounted] = useState(false)
   const { resolvedTheme } = useTheme()
   const isReduced = useIsReduced()
-  const isDark = resolvedTheme === 'dark'
+  // Use system preference as fallback if theme isn't resolved yet
+  const isDark = resolvedTheme === 'dark' || (!resolvedTheme && typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+  
+  // Ensure component is mounted
+  useEffect(() => {
+    setMounted(true)
+  }, [])
   
   // Initialize Vanta Globe effect
   useEffect(() => {
-    if (!vantaRef.current || isReduced) return
+    if (!vantaRef.current || isReduced || !mounted) return
     
     let vantaEffect: any
+    let timer: NodeJS.Timeout
     
-    const initVanta = async () => {
+    // Add a small delay to ensure DOM is fully ready
+    timer = setTimeout(async () => {
+      if (!vantaRef.current) return
+      
       try {
         const GLOBE = (await import('vanta/dist/vanta.globe.min')).default
         vantaEffect = GLOBE({
@@ -120,11 +131,10 @@ export default function Hero({ className }: HeroProps) {
           vantaRef.current.className += ' bg-gradient-to-br from-blue-500/10 via-green-500/5 to-blue-600/10'
         }
       }
-    }
-    
-    initVanta()
+    }, 100) // 100ms delay to ensure DOM is ready
     
     return () => {
+      clearTimeout(timer)
       if (vantaEffect) {
         try {
           vantaEffect.destroy()
@@ -134,7 +144,7 @@ export default function Hero({ className }: HeroProps) {
         }
       }
     }
-  }, [isReduced]) // Remove isDark from dependencies
+  }, [isReduced, mounted]) // Add mounted dependency
   
   // Update globe color when theme changes (without reinitializing)
   useEffect(() => {
