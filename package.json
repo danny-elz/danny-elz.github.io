@@ -9,7 +9,9 @@
     "start": "next start",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
-    "analyze": "ANALYZE=true next build"
+    "analyze": "ANALYZE=true next build",
+    "export": "next build",
+    "deploy": "npm run export && touch out/.nojekyll"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",

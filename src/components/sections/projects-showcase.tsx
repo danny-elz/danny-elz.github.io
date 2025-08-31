@@ -115,7 +115,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
         <div className="space-y-3">
           <div className="flex items-center gap-3 text-sm">
             <span className="font-mono font-bold text-lg text-primary">
-              {typeof project.metrics.primary === 'string' ? project.metrics.primary : project.metrics.primary.toLocaleString()}
+              {project.metrics.primary}
             </span>
             {project.metrics.secondary && (
               <>

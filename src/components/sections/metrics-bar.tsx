@@ -79,15 +79,16 @@ interface MetricItemProps {
   target?: number
   shouldAnimate: boolean
   className?: string
+  style?: React.CSSProperties
 }
 
-function MetricItem({ value, label, animated = false, target, shouldAnimate, className }: MetricItemProps) {
+function MetricItem({ value, label, animated = false, target, shouldAnimate, className, style }: MetricItemProps) {
   const animatedValue = useCounter(target || 0, 1200, shouldAnimate && animated)
   
   const displayValue = animated && target ? animatedValue.toLocaleString() : value
   
   return (
-    <div className={cn('text-center space-y-2', className)}>
+    <div className={cn('text-center space-y-2', className)} style={style}>
       <div className="text-2xl md:text-3xl font-bold tabular-nums tracking-tight">
         <span className="bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
           {displayValue}

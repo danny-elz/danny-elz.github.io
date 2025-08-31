@@ -115,39 +115,34 @@ export function trackPerformance() {
           lcp: Math.round(navigation.loadEventEnd - navigation.loadEventStart),
           fcp: Math.round(navigation.responseEnd - navigation.fetchStart),
           dom_load: Math.round(navigation.domContentLoadedEventEnd - navigation.domContentLoadedEventStart),
-          page_load: Math.round(navigation.loadEventEnd - navigation.navigationStart)
+          page_load: Math.round(navigation.loadEventEnd - navigation.fetchStart)
         })
       }
 
       // Track Core Web Vitals with web-vitals library
-      import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB, getINP }) => {
-        getCLS((metric) => trackEvent('Core Web Vital', { 
+      import('web-vitals').then(({ onCLS, onFCP, onLCP, onTTFB, onINP }) => {
+        onCLS?.((metric: any) => trackEvent('Core Web Vital', { 
           name: 'CLS', 
           value: Math.round(metric.value * 1000) / 1000,
           rating: metric.rating 
         }))
-        getFID((metric) => trackEvent('Core Web Vital', { 
-          name: 'FID', 
-          value: Math.round(metric.value),
-          rating: metric.rating 
-        }))
-        getFCP((metric) => trackEvent('Core Web Vital', { 
+        onFCP?.((metric: any) => trackEvent('Core Web Vital', { 
           name: 'FCP', 
           value: Math.round(metric.value),
           rating: metric.rating 
         }))
-        getLCP((metric) => trackEvent('Core Web Vital', { 
+        onLCP?.((metric: any) => trackEvent('Core Web Vital', { 
           name: 'LCP', 
           value: Math.round(metric.value),
           rating: metric.rating 
         }))
-        getTTFB((metric) => trackEvent('Core Web Vital', { 
+        onTTFB?.((metric: any) => trackEvent('Core Web Vital', { 
           name: 'TTFB', 
           value: Math.round(metric.value),
           rating: metric.rating 
         }))
         // Track INP (Interaction to Next Paint) - replacement for FID
-        getINP((metric) => trackEvent('Core Web Vital', { 
+        onINP?.((metric: any) => trackEvent('Core Web Vital', { 
           name: 'INP', 
           value: Math.round(metric.value),
           rating: metric.rating 
