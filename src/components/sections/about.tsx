@@ -89,8 +89,8 @@ export default function About({ className }: AboutProps) {
           </h2>
           
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Every line of code serves a business purpose. Every architecture decision 
-            drives measurable outcomes.
+            Great software begins with thoughtful design. Every line of code serves a purpose, 
+            every interface tells a story, and every architecture decision shapes the user experience.
           </p>
         </div>
 
@@ -134,7 +134,7 @@ export default function About({ className }: AboutProps) {
               style={{ transitionDelay: '180ms' }}
             >
               <p className="text-xl md:text-2xl font-medium leading-relaxed text-foreground">
-                I architect solutions that transform complexity into competitive advantage.
+                Design isn't decoration—it's the foundation of exceptional software that users love and businesses depend on.
               </p>
             </div>
             
@@ -146,15 +146,16 @@ export default function About({ className }: AboutProps) {
               style={{ transitionDelay: '240ms' }}
             >
               <p className="text-lg text-muted-foreground leading-relaxed">
-                From startups scaling to enterprise giants optimizing—I've guided technical decisions 
-                that drive real business outcomes. <strong className="text-foreground">Neural Innovation</strong> represents 
-                this philosophy: cutting-edge technology with practical impact.
+                The best software feels effortless to use because every interaction was carefully considered. 
+                Behind intuitive interfaces lies thoughtful architecture—systems designed not just to work, 
+                but to scale gracefully, adapt to change, and delight users at every touchpoint.
               </p>
               
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Whether it's reducing cloud costs by 67%, scaling systems to handle 10× traffic, 
-                or building tamper-proof compliance tools—every project starts with understanding 
-                your business goals, not just technical requirements.
+                Good design anticipates problems before they arise. It creates clarity from complexity, 
+                builds trust through consistency, and transforms technical capabilities into meaningful 
+                experiences. When design drives development, the result is software that doesn't just 
+                meet requirements—it exceeds expectations.
               </p>
             </div>
 

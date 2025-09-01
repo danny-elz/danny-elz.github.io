@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { useSectionTracking } from '@/hooks/useAnalytics'
 import { trackConversion } from '@/lib/analytics'
+import { Mail, Linkedin } from 'lucide-react'
 
 interface ContactProps {
   className?: string
@@ -12,7 +13,7 @@ interface ContactProps {
 
 export default function Contact({ className }: ContactProps) {
   const sectionRef = useSectionTracking('contact')
-  const [activeTab, setActiveTab] = useState<'email' | 'calendly' | 'linkedin'>('email')
+  const [activeTab, setActiveTab] = useState<'email' | 'linkedin'>('email')
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -76,9 +77,8 @@ export default function Contact({ className }: ContactProps) {
           <div className="flex justify-center">
             <div className="inline-flex items-center p-1 rounded-lg bg-muted/50 dark:bg-muted/20 border border-border dark:border-border/50">
               {[
-                { id: 'email' as const, label: 'Email', icon: '✉️' },
-                { id: 'calendly' as const, label: 'Book Call', icon: '📅' },
-                { id: 'linkedin' as const, label: 'LinkedIn', icon: '💼' }
+                { id: 'email' as const, label: 'Email' },
+                { id: 'linkedin' as const, label: 'LinkedIn' }
               ].map((tab) => (
                 <button
                   key={tab.id}
@@ -87,7 +87,7 @@ export default function Contact({ className }: ContactProps) {
                     trackConversion('contact_tab_switch', tab.id)
                   }}
                   className={cn(
-                    'px-4 py-2 text-sm font-medium rounded-md transition-all duration-300 hover:scale-[1.02]',
+                    'px-4 py-2 text-sm font-medium rounded-md transition-all duration-300',
                     activeTab === tab.id
                       ? 'bg-background dark:bg-background/80 text-foreground shadow-sm'
                       : 'text-muted-foreground hover:text-foreground'
@@ -95,7 +95,6 @@ export default function Contact({ className }: ContactProps) {
                   aria-pressed={activeTab === tab.id}
                   role="tab"
                 >
-                  <span className="mr-2">{tab.icon}</span>
                   {tab.label}
                 </button>
               ))}
@@ -152,7 +151,7 @@ export default function Contact({ className }: ContactProps) {
                   type="submit"
                   size="lg"
                   disabled={isSubmitting}
-                  className="w-full md:w-auto hover:scale-[1.02] transition-all duration-300"
+                  className="w-full md:w-auto"
                   aria-describedby="submit-status"
                 >
                   {isSubmitting ? 'Sending...' : 'Send Message'}
@@ -166,27 +165,12 @@ export default function Contact({ className }: ContactProps) {
               </form>
             )}
 
-            {activeTab === 'calendly' && (
-              <div className="text-center space-y-6">
-                <h3 className="text-lg font-semibold">Schedule a Strategy Call</h3>
-                <div className="border rounded-lg overflow-hidden">
-                  <iframe
-                    src={`${process.env.NEXT_PUBLIC_CALENDLY_URL || 'https://calendly.com/dannyelzein'}?embed_domain=${typeof window !== 'undefined' ? window.location.hostname : ''}`}
-                    width="100%"
-                    height="600"
-                    frameBorder="0"
-                    title="Schedule a meeting"
-                  />
-                </div>
-              </div>
-            )}
-
             {activeTab === 'linkedin' && (
               <div className="text-center space-y-6">
                 <h3 className="text-lg font-semibold">Connect on LinkedIn</h3>
                 <div className="p-8 border border-border dark:border-border/50 rounded-lg bg-background/50 dark:bg-background/20">
                   <div className="w-16 h-16 mx-auto mb-4 bg-blue-600 dark:bg-blue-700 rounded-full flex items-center justify-center">
-                    <span className="text-2xl text-white">💼</span>
+                    <Linkedin className="w-8 h-8 text-white" />
                   </div>
                   <Button asChild>
                     <a 

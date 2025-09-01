@@ -15,6 +15,12 @@ function ProjectCard({ project, index }: ProjectCardProps) {
   const [isPlaying, setIsPlaying] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
   
+  // Determine image extension based on project
+  const getImageExtension = (projectId: string) => {
+    const pngProjects = ['compliance-screenshot-archiver', 'automotive-buyers-toolkit', 'd-sports']
+    return pngProjects.includes(projectId) ? 'png' : 'jpg'
+  }
+  
   const handleMouseEnter = () => {
     const video = videoRef.current
     if (!video) return
@@ -63,7 +69,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
               muted
               playsInline
               preload="metadata"
-              poster={`/images/projects/${project.id}-poster.jpg`}
+              poster={`/images/projects/${project.id}.${getImageExtension(project.id)}`}
               onLoadedData={() => setIsLoaded(true)}
             >
               <source src={`/videos/projects/${project.id}-preview.mp4`} type="video/mp4" />
@@ -83,16 +89,12 @@ function ProjectCard({ project, index }: ProjectCardProps) {
             </div>
           </>
         ) : (
-          <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
-            <div className="text-center space-y-2">
-              <div className="w-12 h-12 mx-auto rounded-full bg-muted-foreground/10 flex items-center justify-center">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-                </svg>
-              </div>
-              <p className="text-sm font-medium">Case Study Preview</p>
-            </div>
-          </div>
+          <img
+            src={`/images/projects/${project.id}.${getImageExtension(project.id)}`}
+            alt={`${project.title} screenshot`}
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            loading="lazy"
+          />
         )}
         
         {/* Gradient overlay */}
@@ -173,7 +175,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
               className="text-sm"
             >
               <a href={project.links.caseStudy}>
-                Case Study →
+                View Demo →
               </a>
             </Button>
           )}
@@ -192,55 +194,54 @@ export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
     {
       id: 'compliance-screenshot-archiver',
       title: 'Compliance Screenshot Archiver',
-      description: 'Tamper-proof evidence system for legal compliance',
-      challenge: 'Legal team needed tamper-proof evidence collection',
-      solution: 'Built distributed screenshot archiving with cryptographic verification',
-      impact: '$2.3M saved in compliance costs',
+      description: 'Enterprise evidence archival with tamper-proof verification',
+      challenge: 'Legal compliance required tamper-proof screenshot archival system',
+      solution: 'Built SHA-256 encrypted archival with 100% uptime guarantee',
+      impact: 'Zero tamper incidents achieved',
       metrics: {
-        primary: '847,293',
-        secondary: '0 tamper incidents in 2 years'
+        primary: '100%',
+        secondary: 'Uptime guarantee'
       },
-      technologies: ['Python', 'AWS Lambda', 'S3 Object Lock', 'DynamoDB', 'EventBridge', 'Playwright', 'FastAPI'],
+      technologies: ['Python', 'Encryption', 'SHA-256', 'Cloud Storage', 'Compliance', 'Legal Tech'],
       links: {
-        architecture: '#architecture',
-        caseStudy: '#case-study',
-        demo: '/videos/compliance-demo.mp4'
+        architecture: 'https://github.com/danny-elz/compliance-screenshot-archiver',
+        caseStudy: 'https://github.com/danny-elz/compliance-screenshot-archiver'
       },
       featured: true
     },
     {
-      id: 'performance-transformation',
-      title: 'Performance Transformation',
-      description: 'E-commerce optimization for 1M+ daily users',
-      challenge: 'E-commerce site serving 1M+ daily users with 2.7s load times',
-      solution: 'Implemented edge-first architecture with advanced caching',
-      impact: '+47% conversion rate increase',
+      id: 'automotive-buyers-toolkit',
+      title: 'Automotive Buyers Toolkit',
+      description: 'AI-powered automotive purchasing decision platform',
+      challenge: 'Car buyers needed comprehensive analysis tools for informed decisions',
+      solution: 'Built AI-driven platform with market analysis and decision support',
+      impact: 'Beta launching Q1 2026',
       metrics: {
-        primary: '2.7s → 0.4s',
-        secondary: '+47% conversion'
+        primary: 'Q1 2026',
+        secondary: 'Beta Launch'
       },
-      technologies: ['Next.js', 'Edge Runtime', 'CDN', 'Image Pipeline', 'Redis', 'GraphQL'],
+      technologies: ['AI/ML', 'Market Analysis', 'Decision Support', 'Automotive Data', 'Next.js', 'TypeScript'],
       links: {
-        architecture: '#architecture',
-        caseStudy: '#case-study'
+        architecture: 'https://prod.shaikhcloud.com/',
+        caseStudy: 'https://prod.shaikhcloud.com/'
       },
       featured: true
     },
     {
-      id: 'ml-pipeline-optimization',
-      title: 'ML Pipeline Optimization',
-      description: 'Real-time fraud detection system enhancement',
-      challenge: 'Real-time fraud detection with 92% accuracy needed improvement',
-      solution: 'Redesigned ML pipeline with advanced feature engineering',
-      impact: '10× throughput improvement',
+      id: 'd-sports',
+      title: 'D-Sports Platform',
+      description: 'Decentralized sports NFT and blockchain ecosystem',
+      challenge: 'Sports industry needed blockchain-based asset management platform',
+      solution: 'Built comprehensive decentralized sports platform with NFT integration',
+      impact: 'Revolutionary sports blockchain',
       metrics: {
-        primary: '92% → 99.3%',
-        secondary: '10× throughput'
+        primary: 'Blockchain',
+        secondary: 'Sports NFTs'
       },
-      technologies: ['Python', 'TensorFlow', 'Redis', 'Kubernetes', 'Apache Kafka', 'PostgreSQL'],
+      technologies: ['Blockchain', 'NFTs', 'Decentralized Systems', 'Sports Analytics', 'Web3', 'Smart Contracts'],
       links: {
-        architecture: '#architecture',
-        caseStudy: '#case-study'
+        architecture: 'https://app.d-sports.org/',
+        caseStudy: 'https://app.d-sports.org/'
       },
       featured: true
     }

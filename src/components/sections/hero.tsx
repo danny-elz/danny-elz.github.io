@@ -251,7 +251,7 @@ export default function Hero({ className }: HeroProps) {
               variant="outline"
               className="text-base px-6 py-3"
             >
-              View Case Studies
+              View Demos
             </MagneticButton>
             <MagneticButton
               href="#contact"

@@ -103,17 +103,17 @@ export default function ExperienceTimeline({ className }: ExperienceTimelineProp
       duration: 'May 2024 – Present',
       startDate: new Date('2024-05-01'),
       highlights: [
-        'Developed blockchain-based sports analytics platform',
-        'Implemented AI-driven performance insights',
-        'Built scalable microservices architecture',
+        'Developed blockchain-based sports NFT platform',
+        'Built decentralized sports ecosystem',
+        'Implemented scalable microservices architecture',
         'Collaborated in hybrid environment across Toronto'
       ],
-      technologies: ['Blockchain', 'Artificial Intelligence', 'Node.js', 'React', 'TypeScript']
+      technologies: ['Blockchain', 'NFTs', 'Node.js', 'React', 'TypeScript']
     },
     {
       id: 'iris-software',
       company: 'IRIS Software Group',
-      role: 'Back End Developer',
+      role: 'Back End Developer Intern',
       duration: 'Jan 2023 – Apr 2023',
       startDate: new Date('2023-01-01'),
       endDate: new Date('2023-04-01'),
@@ -128,7 +128,7 @@ export default function ExperienceTimeline({ className }: ExperienceTimelineProp
     {
       id: 'sentry',
       company: 'Sentry',
-      role: 'Software Engineer',
+      role: 'Software Engineering Intern',
       duration: 'Jan 2022 – Apr 2022',
       startDate: new Date('2022-01-01'),
       endDate: new Date('2022-04-01'),
