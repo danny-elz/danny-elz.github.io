@@ -240,7 +240,7 @@ export default function Hero({ className }: HeroProps) {
           <div className="mb-8 space-y-2">
             <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" aria-hidden="true" />
             <p className="text-lg md:text-xl text-muted-foreground font-medium">
-              I engineer systems for measurable impact
+              Building systems that drive measurable outcomes
             </p>
           </div>
           
