@@ -240,7 +240,7 @@ export default function Hero({ className }: HeroProps) {
           <div className="mb-8 space-y-2">
             <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" aria-hidden="true" />
             <p className="text-lg md:text-xl text-muted-foreground font-medium">
-              Systems engineered for measurable impact
+              I engineer systems for measurable impact
             </p>
           </div>
           
@@ -263,7 +263,7 @@ export default function Hero({ className }: HeroProps) {
           
           {/* Technology Trust Indicators */}
           <div className="flex flex-wrap items-center justify-center gap-3 text-sm font-medium text-muted-foreground">
-            <span className="text-xs text-muted-foreground/70 mb-2 w-full">Trusted by:</span>
+            <span className="text-xs text-muted-foreground/70 mb-2 w-full">Experience with:</span>
             {['Python', 'AWS', 'Next.js', 'Docker', 'K8s'].map((tech) => (
               <span 
                 key={tech}
