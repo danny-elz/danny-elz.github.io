@@ -15,18 +15,18 @@ export default function Home() {
     <main id="main-content">
       {/* Hero Section with Vanta Globe */}
       <Hero />
-      
-      {/* Metrics Credibility Bar */}
-      <MetricsBar />
-      
-      {/* Projects Showcase */}
-      <ProjectsShowcase />
-      
-      {/* Experience Timeline */}
-      <ExperienceTimeline />
-      
+
       {/* About Me */}
       <About />
+
+      {/* Metrics Credibility Bar */}
+      <MetricsBar />
+
+      {/* Projects Showcase */}
+      <ProjectsShowcase />
+
+      {/* Experience Timeline */}
+      <ExperienceTimeline />
       
       {/* Multi-Channel Contact */}
       <Contact />

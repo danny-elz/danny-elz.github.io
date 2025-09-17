@@ -1,193 +1,225 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
 import { cn } from '@/lib/utils'
-import { Button } from '@/components/ui/button'
+import { useSectionTracking } from '@/hooks/useAnalytics'
+import Image from 'next/image'
+import {
+  Code,
+  Briefcase,
+  Heart,
+  Gamepad2,
+  Dumbbell,
+  Brain,
+  Mountain,
+  Coffee,
+  User,
+  Target,
+  Sparkles,
+  Lightbulb
+} from 'lucide-react'
 
 interface AboutProps {
   className?: string
 }
 
-function useIntersectionObserver(threshold = 0.3) {
-  const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
-  
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting)
-      },
-      { 
-        threshold,
-        rootMargin: '0px 0px -100px 0px'
-      }
-    )
-    
-    const element = ref.current
-    if (element) {
-      observer.observe(element)
-    }
-    
-    return () => {
-      if (element) {
-        observer.unobserve(element)
-      }
-    }
-  }, [threshold])
-  
-  return [ref, isVisible] as const
-}
-
 export default function About({ className }: AboutProps) {
-  const [containerRef, isVisible] = useIntersectionObserver(0.2)
-  
-  const principles = [
-    {
-      metric: '67%',
-      label: 'Cost Reduction',
-      description: 'Average infrastructure savings through strategic optimization'
-    },
-    {
-      metric: '10×',
-      label: 'Performance Gains', 
-      description: 'Typical improvement in system throughput and reliability'
-    },
-    {
-      metric: '99.9%',
-      label: 'Success Rate',
-      description: 'Projects delivered on time with measurable business impact'
-    }
+  const sectionRef = useSectionTracking('about')
+
+  const interests = [
+    { icon: Gamepad2, label: 'Gaming', description: 'Competitive FPS & strategy games' },
+    { icon: Dumbbell, label: 'Fitness', description: 'Weightlifting & running' },
+    { icon: Mountain, label: 'Adventure', description: 'Hiking & exploring nature' },
+    { icon: Brain, label: 'Learning', description: 'AI/ML & new technologies' },
+    { icon: Coffee, label: 'Coffee', description: 'Craft coffee enthusiast' },
+    { icon: Code, label: 'Open Source', description: 'Contributing to OSS projects' },
   ]
 
   return (
-    <section 
-      ref={containerRef}
+    <section
+      ref={sectionRef}
       id="about"
-      className={cn('py-12 md:py-16 content-section', className)}
+      className={cn(
+        'py-16 md:py-24 content-section relative overflow-hidden',
+        className
+      )}
       aria-labelledby="about-heading"
     >
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6">
         {/* Section Header */}
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center gap-2 text-sm font-medium text-muted-foreground mb-4">
-            <div className="w-8 h-px bg-gradient-to-r from-transparent to-border" aria-hidden="true" />
-            <span className="tracking-wider uppercase">Philosophy</span>
-            <div className="w-8 h-px bg-gradient-to-l from-transparent to-border" aria-hidden="true" />
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+            <Heart className="w-4 h-4" />
+            <span>About Me</span>
           </div>
-          
-          <h2 
+          <h2
             id="about-heading"
             className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6"
           >
             <span className="bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-              Systems That
-            </span>
-            <br />
-            <span className="bg-gradient-to-r from-blue-600 via-green-500 to-blue-600 bg-clip-text text-transparent">
-              Scale Impact
+              Beyond The Code
             </span>
           </h2>
-          
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Great software begins with thoughtful design. Every line of code serves a purpose, 
-            every interface tells a story, and every architecture decision shapes the user experience.
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            Full-stack developer by profession, problem solver by passion
           </p>
         </div>
 
-        {/* Core Philosophy */}
-        <div className="space-y-12">
-          {/* Principles Grid */}
-          <div className="grid md:grid-cols-3 gap-8">
-            {principles.map((principle, index) => (
-              <div
-                key={principle.label}
-                className={cn(
-                  'text-center space-y-4 transition-all duration-700 ease-out',
-                  isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                )}
-                style={{
-                  transitionDelay: `${index * 60}ms`
-                }}
-              >
-                <div className="text-3xl md:text-4xl font-bold tabular-nums tracking-tight">
-                  <span className="bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
-                    {principle.metric}
-                  </span>
-                </div>
-                <div className="font-medium text-foreground">
-                  {principle.label}
-                </div>
-                <div className="text-sm text-muted-foreground leading-relaxed">
-                  {principle.description}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+          {/* Left Column - Professional Role */}
+          <div className="lg:col-span-1 space-y-6">
+            <div className="relative">
+              <div className="relative w-48 h-48 mx-auto lg:mx-0 rounded-2xl overflow-hidden border-4 border-primary/20">
+                <Image
+                  src="/profile-photo.png"
+                  alt="Danny Elzein"
+                  fill
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <Briefcase className="w-5 h-5 text-primary" />
+                <div>
+                  <h3 className="font-semibold">Full-Stack Developer</h3>
+                  <p className="text-sm text-muted-foreground">Systems Architect</p>
                 </div>
               </div>
-            ))}
-          </div>
 
-          {/* Core Message */}
-          <div className="text-center space-y-8">
-            <div 
-              className={cn(
-                'transition-all duration-700 ease-out',
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              )}
-              style={{ transitionDelay: '180ms' }}
-            >
-              <p className="text-xl md:text-2xl font-medium leading-relaxed text-foreground">
-                Design isn't decoration—it's the foundation of exceptional software that users love and businesses depend on.
+              <p className="text-muted-foreground leading-relaxed">
+                I specialize in building scalable systems that don't just meet requirements—they exceed expectations.
+                With expertise in systems architecture, modern web technologies, and a passion for clean code,
+                I transform complex problems into elegant solutions.
               </p>
-            </div>
-            
-            <div 
-              className={cn(
-                'max-w-3xl mx-auto space-y-6 transition-all duration-700 ease-out',
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              )}
-              style={{ transitionDelay: '240ms' }}
-            >
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                The best software feels effortless to use because every interaction was carefully considered. 
-                Behind intuitive interfaces lies thoughtful architecture—systems designed not just to work, 
-                but to scale gracefully, adapt to change, and delight users at every touchpoint.
-              </p>
-              
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                Good design anticipates problems before they arise. It creates clarity from complexity, 
-                builds trust through consistency, and transforms technical capabilities into meaningful 
-                experiences. When design drives development, the result is software that doesn't just 
-                meet requirements—it exceeds expectations.
-              </p>
-            </div>
 
-            {/* Call to Action */}
-            <div 
-              className={cn(
-                'pt-6 transition-all duration-700 ease-out',
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              )}
-              style={{ transitionDelay: '300ms' }}
-            >
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-blue-600 to-green-500 hover:from-blue-700 hover:to-green-600 hover:scale-[1.02] transition-all duration-300"
-                asChild
-              >
-                <a href="#contact" className="inline-flex items-center gap-2">
-                  <span className="whitespace-nowrap">Start Your Project</span>
-                  <svg 
-                    className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </a>
-              </Button>
+              <div className="pt-4 space-y-2">
+                <div className="flex items-center gap-2 text-sm">
+                  <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
+                  <span className="text-muted-foreground">Available for projects</span>
+                </div>
+                <div className="flex items-center gap-2 text-sm">
+                  <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                  <span className="text-muted-foreground">Remote worldwide</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Visual Separator */}
+          {/* Middle Column - Personal Story */}
+          <div className="lg:col-span-1 space-y-6">
+            <div>
+              <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                <User className="w-5 h-5 text-primary" />
+                Who I Am
+              </h3>
+              <div className="space-y-4 text-muted-foreground">
+                <p>
+                  Hi! I'm Danny—a developer who believes that great software is born from the intersection
+                  of technical excellence and human creativity.
+                </p>
+                <p>
+                  My journey into tech started with a simple curiosity about how things work.
+                  That curiosity evolved into a passion for building systems that make a real difference
+                  in people's lives and businesses' success.
+                </p>
+                <p>
+                  When I'm not designing systems,
+                  you'll find me pushing my limits at the gym, exploring new hiking trails,
+                  or diving deep into the latest advancements in AI and machine learning.
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                <Target className="w-5 h-5 text-primary" />
+                My Philosophy
+              </h3>
+              <div className="space-y-3">
+                <div className="p-4 rounded-lg bg-muted/30 border border-border/50">
+                  <p className="text-sm italic text-muted-foreground">
+                    "Excellence is not about perfection—it's about continuous improvement
+                    and delivering value that matters."
+                  </p>
+                </div>
+                <p className="text-muted-foreground text-sm">
+                  I approach every project with the mindset of a craftsman: attention to detail,
+                  pride in the work, and always keeping the end user in mind.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column - Interests & Hobbies */}
+          <div className="lg:col-span-1 space-y-6">
+            <div>
+              <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-primary" />
+                Interests & Hobbies
+              </h3>
+              <div className="grid grid-cols-2 gap-3">
+                {interests.map((interest) => {
+                  const Icon = interest.icon
+                  return (
+                    <div
+                      key={interest.label}
+                      className="group p-3 rounded-lg bg-muted/30 border border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-sm"
+                    >
+                      <div className="flex items-start gap-3">
+                        <Icon className="w-5 h-5 text-primary mt-0.5 group-hover:scale-110 transition-transform" />
+                        <div>
+                          <p className="font-medium text-sm">{interest.label}</p>
+                          <p className="text-xs text-muted-foreground">{interest.description}</p>
+                        </div>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
+                <Lightbulb className="w-5 h-5 text-primary" />
+                Fun Facts
+              </h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">•</span>
+                  <span>Can debug code faster after a good workout session</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">•</span>
+                  <span>Believe the best solutions come during hiking breaks</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">•</span>
+                  <span>Coffee consumption directly correlates with code quality</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-primary mt-0.5">•</span>
+                  <span>Gaming strategy skills translate surprisingly well to system architecture</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="mt-16 text-center">
+          <div className="inline-flex flex-col sm:flex-row items-center gap-4 p-6 rounded-2xl bg-gradient-to-r from-primary/5 to-primary/10 border border-primary/20">
+            <p className="text-lg font-medium">
+              Let's build something extraordinary together
+            </p>
+            <a
+              href="#contact"
+              className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
+            >
+              Start a Conversation
+            </a>
+          </div>
         </div>
       </div>
     </section>
