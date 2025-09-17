@@ -17,7 +17,7 @@ function ProjectCard({ project, index }: ProjectCardProps) {
   
   // Determine image extension based on project
   const getImageExtension = (projectId: string) => {
-    const pngProjects = ['compliance-screenshot-archiver', 'automotive-buyers-toolkit', 'd-sports']
+    const pngProjects = ['compliance-screenshot-archiver', 'automotive-buyers-toolkit', 'd-sports', 'news2-live']
     return pngProjects.includes(projectId) ? 'png' : 'jpg'
   }
   
@@ -242,6 +242,24 @@ export default function ProjectsShowcase({ className }: ProjectsShowcaseProps) {
       links: {
         architecture: 'https://app.d-sports.org/',
         caseStudy: 'https://app.d-sports.org/'
+      },
+      featured: true
+    },
+    {
+      id: 'news2-live',
+      title: 'NEWS2-Live',
+      description: 'Real-time patient monitoring system for critical care',
+      challenge: 'Healthcare providers needed real-time patient vital monitoring and alert system',
+      solution: 'Built comprehensive patient monitoring dashboard with live vitals tracking and intelligent alerting',
+      impact: 'Enhanced patient care with real-time monitoring',
+      metrics: {
+        primary: 'Real-time',
+        secondary: 'Patient Monitoring'
+      },
+      technologies: ['Healthcare Tech', 'Real-time Systems', 'Patient Analytics', 'Alert Systems', 'Dashboard UI', 'Medical Data'],
+      links: {
+        architecture: 'https://github.com/danny-elz/NEWS2-Live',
+        caseStudy: 'https://github.com/danny-elz/NEWS2-Live'
       },
       featured: true
     }

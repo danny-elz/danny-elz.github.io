@@ -53,10 +53,14 @@ export default function About({ className }: AboutProps) {
           </div>
           <h2
             id="about-heading"
-            className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-6"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight"
           >
             <span className="bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
-              Beyond The Code
+              Beyond The
+            </span>
+            <br />
+            <span className="bg-gradient-to-r from-blue-600 via-green-500 to-blue-600 bg-clip-text text-transparent">
+              Code
             </span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -207,20 +211,6 @@ export default function About({ className }: AboutProps) {
           </div>
         </div>
 
-        {/* Bottom CTA */}
-        <div className="mt-16 text-center">
-          <div className="inline-flex flex-col sm:flex-row items-center gap-4 p-6 rounded-2xl bg-gradient-to-r from-primary/5 to-primary/10 border border-primary/20">
-            <p className="text-lg font-medium">
-              Let's build something extraordinary together
-            </p>
-            <a
-              href="#contact"
-              className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors"
-            >
-              Start a Conversation
-            </a>
-          </div>
-        </div>
       </div>
     </section>
   )
